@@ -16,6 +16,8 @@ public class Route {
 
             get("/hello", (req, res) -> "Hello World");
 
+            get("/server", (req, res) -> "ws://localhost:8080/service");
+
         } catch (Exception ex) {
             // ignored
         }

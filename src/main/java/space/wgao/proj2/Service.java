@@ -3,6 +3,7 @@ package space.wgao.proj2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import space.wgao.proj2.routes.Route;
+import space.wgao.proj2.socket.ServiceSocketHandler;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -31,6 +32,10 @@ public class Service {
     private void launch() {
 
         port(8080);
+
+        staticFileLocation("public");
+
+        webSocket("/service", ServiceSocketHandler.class);
 
         Route.init();
 
