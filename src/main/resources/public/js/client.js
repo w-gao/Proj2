@@ -126,7 +126,7 @@ function setupSocket() {
             for (let i = new Packet.decode(evt.data); i.eof();) {
                 switch (i.unpackByte()) {
                     case CommCode.TEXT:
-                        displayMessage(i.unpackString(), i.unpackString());
+                        UI.displayMessage(i.unpackString(), i.unpackString());
                         break;
                 }
             }
@@ -135,24 +135,27 @@ function setupSocket() {
     });
 }
 
-function sendLogin(username) {
+const Network = {
 
-    let pk = new Packet.encode(1 + 2 + 2 * username.length);
-    pk.packByte(CommCode.LOGIN);
-    pk.packString(username);
+    sendLogin: function (username) {
 
-    webSocket.send(pk.buffer);
-    return true;
-}
+        let pk = new Packet.encode(1 + 2 + 2 * username.length);
+        pk.packByte(CommCode.LOGIN);
+        pk.packString(username);
 
-function sendChat(message) {
+        webSocket.send(pk.buffer);
+        return true;
+    },
+    sendChat: function (message) {
 
-    let username = 'Player';    // Placeholder for now
+        let username = 'Player';    // Placeholder for now
 
-    let pk = new Packet.encode(1 + 2 + 2 * username.length + 2 + 2 * message.length);
-    pk.packByte(CommCode.TEXT);
-    pk.packString(username);
-    pk.packString(message);
+        let pk = new Packet.encode(1 + 2 + 2 * username.length + 2 + 2 * message.length);
+        pk.packByte(CommCode.TEXT);
+        pk.packString(username);
+        pk.packString(message);
 
-    webSocket.send(pk.buffer);
-}
+        webSocket.send(pk.buffer);
+    }
+
+};

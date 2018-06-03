@@ -12,6 +12,7 @@ html, body {
 }
 
 #renderCanvas {
+    display: none;
     width: 100%;
     height: 100%;
     touch-action: none;
@@ -54,6 +55,8 @@ input[type=text]:focus {
     right: 20px;
 }
 
+/* Chat System */
+
 #chat_window {
     background: rgba(50,50,50,0.5);
     display: block;
@@ -67,31 +70,31 @@ input[type=text]:focus {
     pointer-events: none;
 }
 
-#chat_wrapper {
+#chats {
     background: transparent;
     bottom: 0;
     width: 100%;
     height: auto;
 }
 
-.chat_msg {
+.chat_wrapper {
     position: relative;
     font-weight: bold;
     text-shadow: 1px 1px black;
     padding: 2px 2px 0;
 }
 
-.sender {
+.chat_sender {
     color: magenta;
 }
 
-.msg {
+.chat_msg {
     color: white;
 }
 
 #chat_form {
     background: rgba(50,50,50,0.5);
-    display: block;
+    display: none;
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -109,11 +112,51 @@ input[type=text]:focus {
     padding-top: 2px;
 }
 
-#input_chat {
+#chat_input {
     background: transparent;
     color: white;
     border: 0 solid black;
     width: 100%;
     font-size: 17px;
     outline: 0;
+}
+
+/* Modal System */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 10%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal_container {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.button {
+    background: linear-gradient(#f84, #e73);
+    color: #fff;
+    text-align: center;
+    border-radius: 0.3em;
+    pointer-events: all;
+}
+
+.button:focus {
+    outline: 0;
+}
+
+.modal_button {
+    min-width: 20%;
+    min-height: 20%;
 }

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Proj2</title>
+
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
 
     <!-- Physics Engine -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/oimo/1.0.9/oimo.js"></script>
@@ -18,13 +20,12 @@
 <body>
 
 <div id="login" class="container">
-    <h2 class="content">Enter a username to join...</h2>
     <form action="javascript:joinGame()" id="username_form">
         <input type="text" id="input_username" placeholder="Name?" />
     </form>
 </div>
 
-<canvas id='renderCanvas'></canvas>
+<canvas id='renderCanvas' touch-action="none"></canvas>
 
 <!-- Information display (top right corner) -->
 <div class="stats">
@@ -40,18 +41,30 @@
 <!-- Chat window -->
 <div class="chat">
     <div id="chat_window">
-        <div id="chat_wrapper">
+        <div id="chats">
         </div>
     </div>
 
     <form action="javascript:onChat()" id="chat_form">
         <div id="chat_symbol">»</div>
-        <input id="input_chat" placeholder="message.." />
+        <input id="chat_input" placeholder="message.." />
     </form>
+</div>
+
+<!-- Message display modal -->
+<div id="modal">
+    <div class="modal_container">
+        <h1 class="modal_title"></h1>
+        <p class="modal_content"></p>
+
+        <button class="button modal_button" id="modal_trueBtn"></button>
+        <button class="button modal_button" id="modal_falseBtn"></button>
+    </div>
 </div>
 
 <script src="js/ui.js" type="text/javascript"></script>
 <script src="js/game.js" type="text/javascript"></script>
 <script src="js/client.js" type="text/javascript"></script>
+
 </body>
 </html>

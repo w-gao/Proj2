@@ -21,10 +21,10 @@ function joinGame() {
     const username = document.getElementById('input_username').value;
     if (username === '') return;
 
-    if (sendLogin(username)) {
+    if (Network.sendLogin(username)) {
 
-        hideLoginForm();
-        setUserLabel(username);
+        UI.hideLoginForm();
+        UI.setUserName(username);
 
         startGame();
     }
@@ -34,13 +34,13 @@ function joinGame() {
  * User requests to send a message
  */
 function onChat() {
-    const chatInput = document.getElementById('input_chat');
+    const chatInput = document.getElementById('chat_input');
     const message = chatInput.value;
 
     if (message === '') return;
     chatInput.value = '';
 
-    sendChat(message);
+    Network.sendChat(message);
 }
 
 // global variables
@@ -166,8 +166,7 @@ function startGame() {
         engine.runRenderLoop(function () {
             scene.render();
 
-            const fpsLabel = document.getElementById("fps_label");
-            fpsLabel.innerHTML = engine.getFps().toFixed() + " fps";
+            UI.setFPS(engine.getFps().toFixed());
         });
 
         window.addEventListener('resize', function () {
